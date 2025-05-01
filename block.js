@@ -1,3 +1,5 @@
+const { GENESIS_DATA } = require('./config');
+
 class Block {
   constructor({ timestamp, lastHash, hash, data }){
     this.timestamp = timestamp;
@@ -5,16 +7,13 @@ class Block {
     this.hash = hash;
     this.data = data;
   }
+
+  // genesis() static function is a factory method. 
+  // Factory methods create instances of a class wihtout using constructor
+  static genesis() {
+    // This refers to the Block class
+    return new this(GENESIS_DATA);
+  }
 }
 
 module.exports = Block;
-
-
-// const block1 = new Block({
-//   timestamp: "01/01/01", 
-//   lastHash: "test-lastHash", 
-//   hash: "test-hash", 
-//   data: "test-data"
-// });
-
-// console.log("block1", block1);
