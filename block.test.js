@@ -25,6 +25,16 @@ describe("Block", () => {
     it("returns the genesis data", () => {
       expect(genesisBlock).toEqual(GENESIS_DATA);
     });
+  });
 
-  })
+  describe("mineBlock()", () => {
+    const lastBlock = Block.genesis();
+    const data = "mined data";
+    const minedBlock = Block.mineBlock({ lastBlock, data });
+
+    it("returns a Block instance", () => {
+      expect(minedBlock instanceof Block).toBe(true);
+    });
+  });
+
 });
