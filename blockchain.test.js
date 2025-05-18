@@ -23,7 +23,9 @@ describe("Blockchain", () => {
   describe("isValidChain()", () => {
     describe("when the chain does not start with the genesis block", () => {
       it("returns false", () => {
+        blockchain.chain[0] = { data: "fake-genesis" };
 
+        expect(Blockchain.isValidChain(blockchain.chain)).toBe(false);
       });
     });
 
